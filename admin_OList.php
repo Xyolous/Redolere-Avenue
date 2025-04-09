@@ -3,7 +3,7 @@ session_start();
 include 'connect.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] != 'Admin') {
-    header("Location: index.php");
+    header("Location: index.html");
     exit();
 }
 

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] != 'Admin') {
-    header("Location: index.php");
+    header("Location: index.html");
     exit();
 }
 ?>
@@ -20,7 +20,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] != 'Admin') {
     <div class="sidebar">
         <a href="admin_PList.php">Manage Products</a>
         <a href="admin_OList.php">Customer Orders</a>
-        <a href="index.php">Logout</a>
+        <a href="index.html">Logout</a>
     </div>
     <h1>Welcome, <?php echo $_SESSION['first_name'] . ' ' . $_SESSION['last_name']; ?>!</h1>
 </body>

@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, email, password, user_type) VALUES (?, ?, ?, ?, 'Customer')");
         $stmt->bind_param("ssss", $fname, $lname, $email, $hash_pass);
         if ($stmt->execute()) {
-            echo "<script>alert('Registration successful!'); window.location='index.php';</script>";
+            echo "<script>alert('Registration successful!'); window.location='index.html';</script>";
         } else {
             echo "<script>alert('Email already used!');</script>";
         }
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="password" name="confirm_password" placeholder="Confirm Password" required><br>
             <button type="submit">Create Account</button>
         </form>
-        <p>Already have an account? <a href="index.php">Login here</a></p>
+        <p>Already have an account? <a href="index.html">Login here</a></p>
     </div>
 </body>
 
