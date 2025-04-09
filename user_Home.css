@@ -1,0 +1,181 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    background-color: #3e2723;
+    color: #f3e5ab;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    background-color: #3e2723;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2em;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    padding: 0 10px 0 0;
+}
+
+nav a {
+    color: #ffe0b2;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+    margin: 0 10px;
+}
+
+nav a:hover {
+    color: #bcaaa4;
+}
+
+nav p {
+    font-family: "Playfair Display", serif;
+    font-size: 2em;
+    color: #ffe0b2;
+    padding: 10px 20px;
+}
+
+.carousel-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+.carousel-background img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: slideShow 42s infinite;
+    transition: opacity 1s ease-in-out;
+}
+
+.carousel-background img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.carousel-background img:nth-child(2) {
+    animation-delay: 6s;
+}
+
+.carousel-background img:nth-child(3) {
+    animation-delay: 12s;
+}
+
+.carousel-background img:nth-child(4) {
+    animation-delay: 18s;
+}
+
+.carousel-background img:nth-child(5) {
+    animation-delay: 24s;
+}
+
+.carousel-background img:nth-child(6) {
+    animation-delay: 30s;
+}
+
+.carousel-background img:nth-child(7) {
+    animation-delay: 36s;
+}
+
+@keyframes slideShow {
+    0% {
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    30% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.home_overlay {
+    position: absolute;
+    background-color: rgba(62, 39, 35, 0.5);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.content {
+    text-align: center;
+    padding: 120px 20px 0;
+    z-index: 2;
+    position: relative;
+}
+
+.welcome h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    color: #ffffff;
+    text-shadow: 2px 2px 6px rgba(33, 33, 33, 0.6);
+}
+
+.welcome p {
+    font-size: 1.3em;
+    color: #f3e5ab;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: rgba(78, 52, 46, 0.6);
+
+    padding: 0.8em 1.5em;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    nav p {
+        font-size: 1.5em;
+    }
+
+    .welcome h1 {
+        font-size: 2em;
+    }
+
+    .welcome p {
+        font-size: 1.1em;
+    }
+
+    nav a {
+        font-size: 1em;
+        margin: 5px 0;
+    }
+}

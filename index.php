@@ -1,0 +1,53 @@
+<?php
+session_start();
+include 'connect.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+
+    if ($user && password_verify($password, $user['password'])) {
+        $_SESSION['user_id'] = $user['user_id'];
+        $_SESSION['user_type'] = $user['user_type'];
+        $_SESSION['first_name'] = $user['first_name'];
+        $_SESSION['last_name'] = $user['last_name'];
+
+        if ($user['user_type'] == "Admin") {
+            header("Location: admin_Home.php");
+        } else {
+            header("Location: user_Home.php");
+        }
+    } else {
+        echo "<script>alert('Invalid email or password!');</script>";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Redolere Avenue</title>
+</head>
+
+<body class="login-page">
+    <div class="form-container">
+        <h2>Redolere Avenue</h2>
+        <form method="POST">
+            <input type="text" name="email" placeholder="Email Address" autocomplete="off" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <button type="submit">Log In</button>
+        </form>
+        <p>No account yet? Sign up <a href="register.php">here</a></p>
+    </div>
+</body>
+
+</html>
